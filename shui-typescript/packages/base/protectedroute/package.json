@@ -1,0 +1,4 @@
+{
+    "name": "@shui/protectedroute",
+    "main": "./index.ts"
+}

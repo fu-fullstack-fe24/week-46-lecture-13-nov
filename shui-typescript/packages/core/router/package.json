@@ -1,0 +1,4 @@
+{
+    "name": "@shui/router",
+    "main": "./index.ts"
+}

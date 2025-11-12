@@ -1,0 +1,4 @@
+{
+    "name": "@shui/interfaces",
+    "main": "./index.ts"
+}

@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&family=Quicksand:wght@300..700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* COLORS */
+  --bg-yellow: #FFF085;
+  --bg-red: #FFB3B3;
+  --bg-blue: #B3FFB3;
+  --bg-green: #B3D9FF;
+  --bg-grey: #F3F4F6;
+  --bg-pink: #FFE2E2;
+  --bg-pink-hover: #ffc8c8;
+
+  --text-red: #C10007;
+  --text-red-hover: #6a0105;
+  
+  --bg-gradient-yellow: linear-gradient(to right bottom, #fef9c3, #d7fdd8, #c3fbf2, #c9f3ff, #dceafe);
+  --bg-gradient-pink: linear-gradient(90deg,rgba(250, 100, 183, 1) 0%, rgba(195, 122, 255, 1) 100%);
+  --bg-gradient-orange: linear-gradient(to right bottom, #ff9a76, #ff4e50);
+  --bg-gradient-green: linear-gradient(90deg,rgba(6, 223, 117, 1) 0%, rgba(81, 162, 255, 1) 100%);
+  --bg-gradient-pink-hover: linear-gradient(90deg, rgba(195, 122, 255, 1) 0%, rgba(250, 100, 183, 1) 100%);
+
+
+  /* FONTS */
+  --font-bangers: "Bangers", system-ui;
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-patrick: "Patrick Hand", cursive;
+
+}
+
+body {
+    background: var(--bg-gradient-yellow);
+}
+
+.page {
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-gradient-yellow);
+}
+
+@keyframes wobble {
+  0%, 90%, 100% {
+    transform: rotate(-3deg); /* grundläge */
+  }
+  92% {
+    transform: rotate(-6deg);
+  }
+  94% {
+    transform: rotate(0deg);
+  }
+  96% {
+    transform: rotate(-5deg);
+  }
+  98% {
+    transform: rotate(-3deg);
+  }
+}

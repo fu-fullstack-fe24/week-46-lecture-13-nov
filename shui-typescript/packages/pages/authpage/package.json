@@ -1,0 +1,4 @@
+{
+    "name": "@shui/authpage",
+    "main": "./index.ts"
+}

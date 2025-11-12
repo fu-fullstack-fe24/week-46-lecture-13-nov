@@ -1,0 +1,30 @@
+.notes-page {
+    position: relative;
+    padding-bottom: 3rem;
+
+    .notes-page__button {
+        border-radius: 50%;
+        width: 65px;
+        aspect-ratio: 1;
+        font-size: 2rem;
+        color: white;
+        background: var(--bg-gradient-pink);
+        cursor: pointer;
+        position: fixed;
+        z-index: 99;
+        right: 1rem;
+        bottom: 1rem;
+        transition: all .5s ease;
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
+    .notes-page__button--active:hover {
+        transform: rotate(180deg);
+    }
+
+    .notes-page__button--active {
+        cursor: pointer;
+        opacity: 1;
+    }
+}
