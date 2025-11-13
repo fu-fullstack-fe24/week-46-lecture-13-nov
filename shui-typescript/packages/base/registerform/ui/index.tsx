@@ -3,6 +3,7 @@ import { type FormEvent, useState } from 'react';
 import { Button } from '@shui/button';
 import confetti from '/src/assets/confetti.png';
 import { validateUsername, validatePassword } from '@shui/utils';
+import { useRegisterUserMutation } from '@shui/api';
 
 // Typ för props
 interface RegisterFormProps {
@@ -11,6 +12,7 @@ interface RegisterFormProps {
 
 export const RegisterForm = ({ setFormDisplay }: RegisterFormProps) => {
     const [validationError, setValidationError] = useState<string | null>(null);
+    const [registerUser, { data, isLoading, isError, error}] = useRegisterUserMutation();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -34,7 +36,7 @@ export const RegisterForm = ({ setFormDisplay }: RegisterFormProps) => {
         }
 
         try {
-            // await registerUser({ username, password }).unwrap();
+            await registerUser({ username, password }).unwrap();
             setFormDisplay('login'); // växla till login-formuläret efter registrering
         } catch (err) {
             console.error('Registration failed:', err);
@@ -84,13 +86,13 @@ export const RegisterForm = ({ setFormDisplay }: RegisterFormProps) => {
                 />
             </label>
 
-            {/* <Button
+            <Button
                 text={isLoading ? 'Registering...' : 'Register'}
                 type="auth-form__button auth-form__button--register"
                 icon={confetti}
                 disabled={isLoading}
                 onClick={ () => console.log('click')}
-            /> */}
+            />
         </form>
     );
 };

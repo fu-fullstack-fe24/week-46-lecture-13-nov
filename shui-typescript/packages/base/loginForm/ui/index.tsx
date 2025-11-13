@@ -3,10 +3,15 @@ import { validateUsername, validatePassword } from '@shui/utils';
 import { Button } from '@shui/button';
 import { useNavigate } from 'react-router-dom';
 import startup from '/src/assets/startup.png';
+import { useLoginUserMutation } from '@shui/api';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '@shui/reducers';
 
 export const LoginForm = () => {
     const navigate = useNavigate();
     const [validationError, setValidationError] = useState<string | null>(null);
+    const [loginUser, { data, isLoading, isError, error }] = useLoginUserMutation();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,7 +29,9 @@ export const LoginForm = () => {
         }
 
         try {
+            const result = await loginUser({username, password}).unwrap();
             console.log('login successful');
+            dispatch(setCredentials({ username, token : result.token}));
             navigate('/notes');
         } catch (err) {
             console.error('Login failed:', err);
@@ -41,7 +48,7 @@ export const LoginForm = () => {
     return (
         <form className="auth-form" onSubmit={handleSubmit}>
             {validationError && <p className="auth-form__error">{validationError}</p>}
-            {/* {isError && <p className="auth-form__error">{getErrorMessage(error)}</p>} */}
+            {isError && <p className="auth-form__error">{getErrorMessage(error)}</p>}
 
             <label className="auth-form__label">
                 Username
@@ -63,7 +70,7 @@ export const LoginForm = () => {
                 />
             </label>
 
-            {/* <Button
+            <Button
                 text={isLoading ? 'Signing in...' : 'Sign In'}
                 type="auth-form__button auth-form__button--login"
                 icon={startup}
@@ -79,7 +86,7 @@ export const LoginForm = () => {
                 icon={startup}
                 disabled={isLoading}
                 onClick={() => navigate('/notes')}
-            /> */}
+            />
         </form>
     );
 };
